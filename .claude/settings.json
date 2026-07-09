@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node .claude/hooks/on-edit.mjs",
+            "timeout": 60,
+            "statusMessage": "Linting, formatting, and unit-testing edited file..."
+          }
+        ]
+      }
+    ]
+  }
+}

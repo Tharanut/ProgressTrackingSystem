@@ -1,0 +1,132 @@
+
+สมัคร supabase
+
+
+https://supabase.com/
+
+https://supabase.com/dashboard/sign-up?returnTo=%2Forg
+
+tharanut@globofoods.com
+
+#Tara1201#
+
+-----------------------------------------------------
+
+https://supabase.com/dashboard/new/mdmwaydgeatrblrmkkha?projectName=tharanut@globofoods.com%27s%20Project
+
+
+--------
+
+
+
+https://supabase.com/dashboard/org/mdmwaydgeatrblrmkkha
+
+
+https://supabase.com/dashboard/org/syckfpnvgsoiqxhcapvq
+
+NutOrg
+
+Database password
+
+F7LmtVx8ynjwuSv1
+
+
+-------
+
+https://supabase.com/dashboard/org/syckfpnvgsoiqxhcapvq
+
+https://supabase.com/dashboard/project/khizdvwjvwtrzyupqgpl
+
+
+
+ProjectName
+
+ProgressTrackingSystem
+
+rYhniE8rfoH6Rjkq
+
+
+https://supabase.com/dashboard/project/khizdvwjvwtrzyupqgpl/database/schemas
+
+Connect supabase กับ claude code 
+
+1. Add MCP server
+Add the MCP server to your project config using the command line.
+Code:
+File: Code
+```
+claude mcp add --scope project --transport http supabase "https://mcp.supabase.com/mcp?project_ref=khizdvwjvwtrzyupqgpl"
+```
+
+2. Authenticate
+After configuring the MCP server, you need to authenticate. In a regular terminal (not the IDE extension) run:
+Details:
+Select the supabase server, then Authenticate to begin the flow.
+Code:
+File: Code
+```
+claude /mcp
+```
+
+3. Install Agent Skills (Optional)
+Agent Skills give AI coding tools ready-made instructions, scripts, and resources for working with Supabase more accurately and efficiently.
+Details:
+npx skills add supabase/agent-skills
+Code:
+File: Code
+```
+npx skills add supabase/agent-skills
+```
+
+
+------
+
+claude mcp add --scope project --transport http supabase "https://mcp.supabase.com/mcp?project_ref=khizdvwjvwtrzyupqgpl"
+
+
+claude /mcp
+
+
+npx skills add supabase/agent-skills
+
+
+Table ใน SupaseBase 
+
+https://supabase.com/dashboard/project/khizdvwjvwtrzyupqgpl/editor/17678?schema=public
+
+---------------------
+
+git
+
+https://github.com/Tharanut/ProgressTrackingSystem
+
+
+echo "# ProgressTrackingSystem" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/Tharanut/ProgressTrackingSystem.git
+git push -u origin main
+
+----------
+
+git remote add origin https://github.com/Tharanut/ProgressTrackingSystem.git
+git branch -M main
+git push -u origin main
+
+---------------
+
+
+จากไฟล์  spec.md  ทำ Phase 2 
+
+--------------------------
+
+จากไฟล์  spec.md  ทำ Phase 3
+
+---------------------------
+
+จากไฟล์  spec.md  ทำ Phase 4
+
+
+-------------------------
