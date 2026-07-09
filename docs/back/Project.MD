@@ -625,12 +625,12 @@ Weighted Progress % = Sum(Task Progress % x Planned Man-Day) / Sum(Planned Man-D
   /login
   /dashboard
   /projects
-  /projects/\[id]
-  /projects/\[id]/tasks
-  /projects/\[id]/members
-  /projects/\[id]/planned-vs-actual
+  /projects/\\\\\\\[id]
+  /projects/\\\\\\\[id]/tasks
+  /projects/\\\\\\\[id]/members
+  /projects/\\\\\\\[id]/planned-vs-actual
   /resources
-  /resources/\[id]
+  /resources/\\\\\\\[id]
   /reports
   /reports/project-summary
   /reports/resource-workload
@@ -875,12 +875,12 @@ Weighted Progress % = Sum(Task Progress % x Planned Man-Day) / Sum(Planned Man-D
 ## Environment Variables
 
 ```text
-NEXT\_PUBLIC\_SUPABASE\_URL=
-NEXT\_PUBLIC\_SUPABASE\_ANON\_KEY=
-SUPABASE\_SERVICE\_ROLE\_KEY=
+NEXT\\\\\\\_PUBLIC\\\\\\\_SUPABASE\\\\\\\_URL=
+NEXT\\\\\\\_PUBLIC\\\\\\\_SUPABASE\\\\\\\_ANON\\\\\\\_KEY=
+SUPABASE\\\\\\\_SERVICE\\\\\\\_ROLE\\\\\\\_KEY=
 ```
 
-หมายเหตุ: `SUPABASE\_SERVICE\_ROLE\_KEY` ต้องใช้เฉพาะฝั่ง Server เท่านั้น และห้ามเปิดเผยบน Browser
+หมายเหตุ: `SUPABASE\\\\\\\_SERVICE\\\\\\\_ROLE\\\\\\\_KEY` ต้องใช้เฉพาะฝั่ง Server เท่านั้น และห้ามเปิดเผยบน Browser
 
 \---
 

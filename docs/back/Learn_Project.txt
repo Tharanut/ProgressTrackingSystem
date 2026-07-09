@@ -115,10 +115,8 @@ git remote add origin https://github.com/Tharanut/ProgressTrackingSystem.git
 git branch -M main
 git push -u origin main
 
----------------
 
-
-จากไฟล์  spec.md  ทำ Phase 2 
+จากไฟล์  spec.md  ทำ Phase 2
 
 --------------------------
 
