@@ -47,8 +47,12 @@ export function TaskTable({ projectId, tasks }: { projectId: string; tasks: Task
                   {t.task_name}
                 </Link>
               </td>
-              <td className="py-2 pr-4 text-zinc-600 dark:text-zinc-400">{t.assigned_name ?? "-"}</td>
-              <td className="py-2 pr-4 text-zinc-600 dark:text-zinc-400">{t.planned_end_date ?? "-"}</td>
+              <td className="py-2 pr-4 text-zinc-600 dark:text-zinc-400">
+                {t.assigned_name ?? "-"}
+              </td>
+              <td className="py-2 pr-4 text-zinc-600 dark:text-zinc-400">
+                {t.planned_end_date ?? "-"}
+              </td>
               <td className="py-2 pr-4">
                 <ProgressBar percent={t.progress_percent} />
               </td>

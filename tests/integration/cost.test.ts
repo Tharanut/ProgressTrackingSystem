@@ -2,7 +2,13 @@ import { afterEach, beforeAll, beforeEach, describe, expect, it } from "vitest";
 import type { SupabaseClient } from "@supabase/supabase-js";
 
 import type { Database } from "@/lib/database.types";
-import { cleanupTestProject, createTestProject, createTestTask, SEED_USER_ID, signIn } from "./helpers";
+import {
+  cleanupTestProject,
+  createTestProject,
+  createTestTask,
+  SEED_USER_ID,
+  signIn,
+} from "./helpers";
 
 /**
  * cost_logs are derived 1:1 from time_logs by a DB trigger (migration `10`), snapshotting the
@@ -61,7 +67,11 @@ describe("Cost calculation & rate snapshotting (docs/spec.md §9.3)", () => {
     expect(Number(costLog?.cost_rate_per_day)).toBe(currentRate);
     expect(Number(costLog?.total_cost)).toBe(1 * currentRate);
 
-    const { data: project } = await admin.from("projects").select("actual_cost").eq("id", projectId).single();
+    const { data: project } = await admin
+      .from("projects")
+      .select("actual_cost")
+      .eq("id", projectId)
+      .single();
     expect(Number(project?.actual_cost)).toBe(1 * currentRate);
   });
 
@@ -87,7 +97,10 @@ describe("Cost calculation & rate snapshotting (docs/spec.md §9.3)", () => {
       .single();
 
     try {
-      await admin.from("profiles").update({ cost_rate_per_day: bumpedRate }).eq("id", SEED_USER_ID.member1);
+      await admin
+        .from("profiles")
+        .update({ cost_rate_per_day: bumpedRate })
+        .eq("id", SEED_USER_ID.member1);
 
       const { data: unchangedCostLog } = await admin
         .from("cost_logs")
@@ -116,7 +129,10 @@ describe("Cost calculation & rate snapshotting (docs/spec.md §9.3)", () => {
       expect(Number(newCostLog?.cost_rate_per_day)).toBe(bumpedRate);
     } finally {
       // Always restore the seed rate, even if an assertion above fails.
-      await admin.from("profiles").update({ cost_rate_per_day: originalRate }).eq("id", SEED_USER_ID.member1);
+      await admin
+        .from("profiles")
+        .update({ cost_rate_per_day: originalRate })
+        .eq("id", SEED_USER_ID.member1);
     }
   });
 
@@ -135,10 +151,17 @@ describe("Cost calculation & rate snapshotting (docs/spec.md §9.3)", () => {
 
     await wichai.from("time_logs").delete().eq("id", log!.id);
 
-    const { data: costLogs } = await admin.from("cost_logs").select("id").eq("time_log_id", log!.id);
+    const { data: costLogs } = await admin
+      .from("cost_logs")
+      .select("id")
+      .eq("time_log_id", log!.id);
     expect(costLogs).toHaveLength(0);
 
-    const { data: project } = await admin.from("projects").select("actual_cost").eq("id", projectId).single();
+    const { data: project } = await admin
+      .from("projects")
+      .select("actual_cost")
+      .eq("id", projectId)
+      .single();
     expect(Number(project?.actual_cost)).toBe(0);
   });
 });

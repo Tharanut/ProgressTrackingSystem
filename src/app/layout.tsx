@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
@@ -15,8 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "ProjectPulse — Progress Tracking System",
-  description:
-    "ระบบติดตามความคืบหน้าของ Project, Resource, Man-Day และ Cost ภายในองค์กร",
+  description: "ระบบติดตามความคืบหน้าของ Project, Resource, Man-Day และ Cost ภายในองค์กร",
 };
 
 export default function RootLayout({
@@ -25,12 +25,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="th"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
+    <html lang="th" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
         {children}
+        <Analytics />
       </body>
     </html>
   );

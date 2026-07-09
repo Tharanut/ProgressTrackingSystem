@@ -359,13 +359,22 @@ Progress % = SUM(task.progress_percent × task.planned_man_day) / SUM(task.plann
 ### Phase 5 — Production (Job 5)
 ขึ้นระบบจริงบน Vercel + Supabase อย่างปลอดภัย
 
-- [ ] ตั้งค่า Vercel 3 environment: Development / Preview / Production
-- [ ] Env vars: `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY` (server-only)
-- [ ] RLS/security hardening + ตรวจด้วย Supabase `get_advisors` (แก้ทุก warning)
-- [ ] Custom domain + HTTPS (Vercel จัดการ cert อัตโนมัติ)
-- [ ] Monitoring: Vercel Analytics/Logs + Supabase logs; health check
-- [ ] Backup/Rollback: เปิด Supabase PITR + ขั้นตอน rollback deployment บน Vercel
-- [ ] Go-live checklist: smoke test ทุก role + ตรวจ performance dashboard
+- [ ] ตั้งค่า Vercel 3 environment: Development / Preview / Production (pending — ดู `docs/deployment.md` §1)
+- [ ] Env vars: `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY` (server-only) (pending — ดู `docs/deployment.md` §2)
+- [x] RLS/security hardening + ตรวจด้วย Supabase `get_advisors` (แก้ทุก warning) — performance
+      WARNs (`auth_rls_initplan`, `multiple_permissive_policies`) แก้แล้วใน migration
+      `11_rls_performance_hardening`; `auth_leaked_password_protection` ยังเหลือเป็น manual
+      dashboard step (ดู `docs/deployment.md` §3)
+- [ ] Custom domain + HTTPS (Vercel จัดการ cert อัตโนมัติ) — deferred ตามที่ผู้ใช้เลือก ใช้
+      `*.vercel.app` ไปก่อน (ดู `docs/deployment.md` §4)
+- [x] Monitoring: Vercel Analytics/Logs + Supabase logs; health check — `@vercel/analytics` +
+      `/api/health` เพิ่มแล้วในโค้ด; เปิด toggle "Web Analytics" ใน dashboard เป็น manual step
+      ครั้งเดียวหลัง deploy (ดู `docs/deployment.md` §5)
+- [ ] Backup/Rollback: เปิด Supabase PITR + ขั้นตอน rollback deployment บน Vercel — PITR
+      deferred ตามที่ผู้ใช้เลือก (paid add-on); runbook rollback เขียนไว้แล้ว (ดู
+      `docs/deployment.md` §6)
+- [ ] Go-live checklist: smoke test ทุก role + ตรวจ performance dashboard — checklist เขียนไว้
+      แล้ว (ดู `docs/deployment.md` §7) ยังไม่ได้รันจริงเพราะยังไม่ deploy
 
 ---
 

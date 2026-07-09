@@ -30,7 +30,8 @@ export default async function ReportsPage() {
       <main className="mx-auto w-full max-w-3xl flex-1 px-6 py-10">
         <h1 className="text-2xl font-bold">Reports</h1>
         <p className="mt-1 text-sm text-zinc-500">
-          รายงานทั้งหมด Export เป็น Excel / PDF / CSV ได้ · Task Progress Report ดูได้ที่หน้า Tasks ของแต่ละ Project
+          รายงานทั้งหมด Export เป็น Excel / PDF / CSV ได้ · Task Progress Report ดูได้ที่หน้า Tasks
+          ของแต่ละ Project
         </p>
 
         <div className="mt-6 grid gap-4">

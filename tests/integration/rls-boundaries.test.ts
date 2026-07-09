@@ -2,7 +2,13 @@ import { afterEach, beforeAll, beforeEach, describe, expect, it } from "vitest";
 import type { SupabaseClient } from "@supabase/supabase-js";
 
 import type { Database } from "@/lib/database.types";
-import { cleanupTestProject, createTestProject, createTestTask, SEED_USER_ID, signIn } from "./helpers";
+import {
+  cleanupTestProject,
+  createTestProject,
+  createTestTask,
+  SEED_USER_ID,
+  signIn,
+} from "./helpers";
 
 /**
  * RLS UPDATE/DELETE policies filter non-matching rows silently (0 rows affected, no error) —
@@ -27,7 +33,9 @@ describe("RLS role boundaries", () => {
   beforeEach(async () => {
     const project = await createTestProject(admin);
     const ownTask = await createTestTask(admin, project.id, { assigned_to: SEED_USER_ID.member1 });
-    const otherTask = await createTestTask(admin, project.id, { assigned_to: SEED_USER_ID.member2 });
+    const otherTask = await createTestTask(admin, project.id, {
+      assigned_to: SEED_USER_ID.member2,
+    });
     projectId = project.id;
     ownTaskId = ownTask.id;
     otherTaskId = otherTask.id;

@@ -84,7 +84,10 @@ export default async function ResourcesPage() {
             </thead>
             <tbody>
               {resources.map((r) => (
-                <tr key={r.id} className="border-b border-zinc-100 last:border-0 dark:border-zinc-900">
+                <tr
+                  key={r.id}
+                  className="border-b border-zinc-100 last:border-0 dark:border-zinc-900"
+                >
                   <td className="py-2 pr-4">
                     <Link
                       href={`/resources/${r.id}`}

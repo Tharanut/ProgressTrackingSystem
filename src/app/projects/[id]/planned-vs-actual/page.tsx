@@ -74,7 +74,10 @@ export default async function PlannedVsActualPage({ params }: { params: Promise<
             </thead>
             <tbody>
               {rows.map((r) => (
-                <tr key={r.item} className="border-b border-zinc-100 last:border-0 dark:border-zinc-900">
+                <tr
+                  key={r.item}
+                  className="border-b border-zinc-100 last:border-0 dark:border-zinc-900"
+                >
                   <td className="py-2 pr-4 font-medium">{r.item}</td>
                   <td className="py-2 pr-4">
                     {r.planned === null
@@ -90,7 +93,12 @@ export default async function PlannedVsActualPage({ params }: { params: Promise<
                     {r.planned === null || r.actual === null ? (
                       <span className="text-xs text-zinc-400">ยังไม่เริ่ม</span>
                     ) : (
-                      <VarianceBadge planned={r.planned} actual={r.actual} unit={r.unit} decimals={r.decimals} />
+                      <VarianceBadge
+                        planned={r.planned}
+                        actual={r.actual}
+                        unit={r.unit}
+                        decimals={r.decimals}
+                      />
                     )}
                   </td>
                 </tr>

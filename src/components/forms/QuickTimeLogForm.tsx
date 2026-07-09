@@ -16,7 +16,7 @@ export function QuickTimeLogForm({ projectId, taskId }: { projectId: string; tas
   return (
     <form
       action={formAction}
-      className="grid gap-4 rounded-xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900 sm:grid-cols-2"
+      className="grid gap-4 rounded-xl border border-zinc-200 bg-white p-6 sm:grid-cols-2 dark:border-zinc-800 dark:bg-zinc-900"
     >
       <input type="hidden" name="project_id" value={projectId} />
       <input type="hidden" name="task_id" value={taskId} />
@@ -27,7 +27,15 @@ export function QuickTimeLogForm({ projectId, taskId }: { projectId: string; tas
       </div>
       <div>
         <label className={labelClass}>Work Hour</label>
-        <input type="number" step="0.5" min="0.5" max="24" name="work_hour" required className={inputClass} />
+        <input
+          type="number"
+          step="0.5"
+          min="0.5"
+          max="24"
+          name="work_hour"
+          required
+          className={inputClass}
+        />
       </div>
       <div className="sm:col-span-2">
         <label className={labelClass}>Work Detail</label>

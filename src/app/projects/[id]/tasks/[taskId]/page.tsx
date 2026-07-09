@@ -42,7 +42,9 @@ export default async function TaskDetailPage({
 
   const { data: logData } = await supabase
     .from("time_logs")
-    .select("id, work_date, work_hour, work_detail, issue_blocker, user_id, employee:profiles(full_name)")
+    .select(
+      "id, work_date, work_hour, work_detail, issue_blocker, user_id, employee:profiles(full_name)",
+    )
     .eq("task_id", taskId)
     .order("work_date", { ascending: false });
   const logs = (logData ?? []) as unknown as RawTimeLogRow[];
@@ -104,12 +106,19 @@ export default async function TaskDetailPage({
                 </thead>
                 <tbody>
                   {logs.map((l) => (
-                    <tr key={l.id} className="border-b border-zinc-100 last:border-0 dark:border-zinc-900">
+                    <tr
+                      key={l.id}
+                      className="border-b border-zinc-100 last:border-0 dark:border-zinc-900"
+                    >
                       <td className="py-2 pr-4">{l.work_date}</td>
                       <td className="py-2 pr-4">{l.employee?.full_name ?? "-"}</td>
                       <td className="py-2 pr-4">{l.work_hour}</td>
-                      <td className="py-2 pr-4 text-zinc-600 dark:text-zinc-400">{l.work_detail ?? "-"}</td>
-                      <td className="py-2 pr-4 text-zinc-600 dark:text-zinc-400">{l.issue_blocker ?? "-"}</td>
+                      <td className="py-2 pr-4 text-zinc-600 dark:text-zinc-400">
+                        {l.work_detail ?? "-"}
+                      </td>
+                      <td className="py-2 pr-4 text-zinc-600 dark:text-zinc-400">
+                        {l.issue_blocker ?? "-"}
+                      </td>
                       <td className="py-2 pr-4">
                         {(l.user_id === profile.id || profile.role === "admin") && (
                           <DeleteTimeLogButton id={l.id} />

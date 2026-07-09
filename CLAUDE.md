@@ -108,7 +108,7 @@ src/
 
 ## Database
 
-- Schema/RLS/seed/triggers อยู่ใน Supabase migrations `01`–`10` (ดูรายการผ่าน
+- Schema/RLS/seed/triggers อยู่ใน Supabase migrations `01`–`11` (ดูรายการผ่าน
   Supabase MCP `list_migrations`)
 - Regenerate types หลังแก้ schema: ใช้ Supabase MCP `generate_typescript_types`
   แล้ววางลง `src/lib/database.types.ts`
@@ -138,6 +138,24 @@ src/
   `security-auditor` after any schema change or before a deploy.
 - All of the above are committed to git (see `CONTRIBUTING.md`) — only `.claude/settings.local.json`
   (personal MCP toggles) is gitignored.
+
+## Deployment (Phase 5)
+
+- Runbook เต็มอยู่ที่ `docs/deployment.md` — environments, env vars, security hardening,
+  custom domain (deferred), monitoring, backup/rollback (Supabase PITR deferred), go-live
+  checklist
+- `GET /api/health` (`src/app/api/health/route.ts`) — lightweight DB round-trip สำหรับ
+  uptime monitor/smoke test
+- `@vercel/analytics` ต่อไว้ใน `src/app/layout.tsx` แล้ว — ต้องกดเปิด "Web Analytics" ใน
+  Vercel dashboard เองครั้งเดียวหลัง deploy (ไม่มี CLI flag)
+- คำสั่ง `vercel` ที่ใช้บ่อย:
+
+```bash
+vercel link                              # ผูก repo นี้กับ Vercel project (ครั้งแรกครั้งเดียว)
+vercel env pull .env.local                # ดึง env vars จาก Vercel ลงมาใช้ local
+vercel --prod                             # deploy manual ขึ้น production (ปกติ push main พอ)
+vercel rollback                           # instant rollback ไป deployment ก่อนหน้า
+```
 
 ## MCP servers (`.mcp.json`, committed)
 

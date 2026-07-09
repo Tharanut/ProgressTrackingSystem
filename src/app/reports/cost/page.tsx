@@ -11,7 +11,10 @@ export default async function CostReportPage() {
   const supabase = await createClient();
 
   const [{ data: projects }, { data: costLogs }, { data: people }] = await Promise.all([
-    supabase.from("projects").select("id, project_code, project_name, planned_cost, actual_cost").order("project_code"),
+    supabase
+      .from("projects")
+      .select("id, project_code, project_name, planned_cost, actual_cost")
+      .order("project_code"),
     supabase.from("cost_logs").select("project_id, user_id, total_cost"),
     supabase.from("profiles").select("id, full_name").eq("is_active", true),
   ]);
@@ -56,7 +59,9 @@ export default async function CostReportPage() {
       <AppNav profile={profile} />
       <main className="mx-auto w-full max-w-4xl flex-1 px-6 py-10">
         <h1 className="text-2xl font-bold">Cost Report</h1>
-        <p className="mt-1 text-sm text-zinc-500">Planned vs Actual Cost แยกตาม Project และตามพนักงาน</p>
+        <p className="mt-1 text-sm text-zinc-500">
+          Planned vs Actual Cost แยกตาม Project และตามพนักงาน
+        </p>
 
         <section className="mt-6">
           <div className="flex items-center justify-between">
@@ -80,7 +85,10 @@ export default async function CostReportPage() {
               </thead>
               <tbody>
                 {byProject.map((p) => (
-                  <tr key={p.id} className="border-b border-zinc-100 last:border-0 dark:border-zinc-900">
+                  <tr
+                    key={p.id}
+                    className="border-b border-zinc-100 last:border-0 dark:border-zinc-900"
+                  >
                     <td className="py-2 pr-4">
                       <Link
                         href={`/projects/${p.id}`}
@@ -104,11 +112,18 @@ export default async function CostReportPage() {
         <section className="mt-10">
           <div className="flex items-center justify-between">
             <h2 className="text-lg font-semibold">Cost by Resource</h2>
-            <ExportButton columns={resourceColumns} rows={byResource} filename="cost-by-resource" title="Cost by Resource" />
+            <ExportButton
+              columns={resourceColumns}
+              rows={byResource}
+              filename="cost-by-resource"
+              title="Cost by Resource"
+            />
           </div>
           <div className="mt-3 overflow-x-auto rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
             {byResource.length === 0 ? (
-              <p className="py-4 text-center text-sm text-zinc-500">ยังไม่มีต้นทุนที่เกิดขึ้นจริง</p>
+              <p className="py-4 text-center text-sm text-zinc-500">
+                ยังไม่มีต้นทุนที่เกิดขึ้นจริง
+              </p>
             ) : (
               <table className="w-full min-w-max text-left text-sm">
                 <thead>
@@ -119,7 +134,10 @@ export default async function CostReportPage() {
                 </thead>
                 <tbody>
                   {byResource.map((r) => (
-                    <tr key={r.id} className="border-b border-zinc-100 last:border-0 dark:border-zinc-900">
+                    <tr
+                      key={r.id}
+                      className="border-b border-zinc-100 last:border-0 dark:border-zinc-900"
+                    >
                       <td className="py-2 pr-4">
                         <Link
                           href={`/resources/${r.id}`}

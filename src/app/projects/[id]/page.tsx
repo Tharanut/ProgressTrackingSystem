@@ -26,7 +26,11 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         ? supabase.from("profiles").select("full_name").eq("id", project.project_owner_id).single()
         : Promise.resolve({ data: null }),
       project.department_id
-        ? supabase.from("departments").select("department_name").eq("id", project.department_id).single()
+        ? supabase
+            .from("departments")
+            .select("department_name")
+            .eq("id", project.department_id)
+            .single()
         : Promise.resolve({ data: null }),
     ]);
 
@@ -49,10 +53,16 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         </div>
 
         <div className="mt-4 flex gap-4 text-sm">
-          <Link href={`/projects/${id}/tasks`} className="text-indigo-600 hover:underline dark:text-indigo-400">
+          <Link
+            href={`/projects/${id}/tasks`}
+            className="text-indigo-600 hover:underline dark:text-indigo-400"
+          >
             Tasks →
           </Link>
-          <Link href={`/projects/${id}/members`} className="text-indigo-600 hover:underline dark:text-indigo-400">
+          <Link
+            href={`/projects/${id}/members`}
+            className="text-indigo-600 hover:underline dark:text-indigo-400"
+          >
             Members →
           </Link>
           <Link
@@ -71,7 +81,9 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             label="MD Variance"
             value={(Number(project.actual_man_day) - Number(project.planned_man_day)).toFixed(2)}
             tone={
-              Number(project.actual_man_day) > Number(project.planned_man_day) ? "danger" : "success"
+              Number(project.actual_man_day) > Number(project.planned_man_day)
+                ? "danger"
+                : "success"
             }
           />
         </section>
@@ -84,11 +96,15 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           <h2 className="text-lg font-semibold">Overview</h2>
           <RoleGuard role={profile.role} allow={["admin", "pm"]}>
             <div className="mt-3">
-              <EditProjectForm project={project} profiles={profiles ?? []} departments={departments ?? []} />
+              <EditProjectForm
+                project={project}
+                profiles={profiles ?? []}
+                departments={departments ?? []}
+              />
             </div>
           </RoleGuard>
           {profile.role !== "admin" && profile.role !== "pm" && (
-            <dl className="mt-3 grid gap-x-8 gap-y-2 rounded-xl border border-zinc-200 bg-white p-6 text-sm dark:border-zinc-800 dark:bg-zinc-900 sm:grid-cols-2">
+            <dl className="mt-3 grid gap-x-8 gap-y-2 rounded-xl border border-zinc-200 bg-white p-6 text-sm sm:grid-cols-2 dark:border-zinc-800 dark:bg-zinc-900">
               <Row label="Owner" value={owner?.full_name} />
               <Row label="Department" value={department?.department_name} />
               <Row label="Planned Start" value={project.planned_start_date} />

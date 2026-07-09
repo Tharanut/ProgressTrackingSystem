@@ -23,7 +23,9 @@ export function DeleteTimeLogButton({ id }: { id: string }) {
       >
         {pending ? "กำลังลบ..." : "ลบ"}
       </button>
-      {state.error && <span className="ml-2 text-xs text-red-600 dark:text-red-400">{state.error}</span>}
+      {state.error && (
+        <span className="ml-2 text-xs text-red-600 dark:text-red-400">{state.error}</span>
+      )}
     </form>
   );
 }

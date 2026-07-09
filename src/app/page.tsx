@@ -28,8 +28,8 @@ export default function Home() {
           และการใช้ Resource ในที่เดียว
         </h1>
         <p className="mx-auto mt-5 max-w-xl text-lg text-zinc-600 dark:text-zinc-400">
-          บันทึก Project, Task, Time Log และเปรียบเทียบ Planned vs Actual เพื่อควบคุม
-          Man-Day และต้นทุนแรงงานได้อย่างแม่นยำ
+          บันทึก Project, Task, Time Log และเปรียบเทียบ Planned vs Actual เพื่อควบคุม Man-Day
+          และต้นทุนแรงงานได้อย่างแม่นยำ
         </p>
         <div className="mt-8 flex justify-center gap-3">
           <Link

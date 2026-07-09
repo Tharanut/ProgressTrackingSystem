@@ -89,11 +89,20 @@ export default async function DashboardPage() {
 
   // Top 5 delayed projects: explicit `delayed` status OR overdue (planned_end_date passed, not done)
   const delayedProjects = rows
-    .filter((p) => p.status === "delayed" || isProjectOverdue(p.planned_end_date, Number(p.progress_percent), today))
+    .filter(
+      (p) =>
+        p.status === "delayed" ||
+        isProjectOverdue(p.planned_end_date, Number(p.progress_percent), today),
+    )
     .map((p) => ({
       ...p,
       daysOverdue: p.planned_end_date
-        ? Math.max(0, Math.round((new Date(today).getTime() - new Date(p.planned_end_date).getTime()) / 86400000))
+        ? Math.max(
+            0,
+            Math.round(
+              (new Date(today).getTime() - new Date(p.planned_end_date).getTime()) / 86400000,
+            ),
+          )
         : 0,
     }))
     .sort((a, b) => b.daysOverdue - a.daysOverdue)
@@ -165,7 +174,10 @@ export default async function DashboardPage() {
                 </thead>
                 <tbody>
                   {[...byDepartment.entries()].map(([name, d]) => (
-                    <tr key={name} className="border-b border-zinc-100 last:border-0 dark:border-zinc-900">
+                    <tr
+                      key={name}
+                      className="border-b border-zinc-100 last:border-0 dark:border-zinc-900"
+                    >
                       <td className="py-2 pr-4 font-medium">{name}</td>
                       <td className="py-2 pr-4">{d.count}</td>
                       <td className="py-2 pr-4">{d.plannedMd}</td>
@@ -181,7 +193,9 @@ export default async function DashboardPage() {
             <h2 className="text-lg font-semibold">Top 5 Overloaded Resources</h2>
             <div className="mt-3 overflow-x-auto rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
               {overloadedResources.length === 0 ? (
-                <p className="py-4 text-center text-sm text-zinc-500">ไม่มี Resource ที่ Overload</p>
+                <p className="py-4 text-center text-sm text-zinc-500">
+                  ไม่มี Resource ที่ Overload
+                </p>
               ) : (
                 <table className="w-full min-w-max text-left text-sm">
                   <thead>
@@ -192,7 +206,10 @@ export default async function DashboardPage() {
                   </thead>
                   <tbody>
                     {overloadedResources.map((r) => (
-                      <tr key={r.id} className="border-b border-zinc-100 last:border-0 dark:border-zinc-900">
+                      <tr
+                        key={r.id}
+                        className="border-b border-zinc-100 last:border-0 dark:border-zinc-900"
+                      >
                         <td className="py-2 pr-4">
                           <Link
                             href={`/resources/${r.id}`}
@@ -230,7 +247,10 @@ export default async function DashboardPage() {
                 </thead>
                 <tbody>
                   {delayedProjects.map((p) => (
-                    <tr key={p.id} className="border-b border-zinc-100 last:border-0 dark:border-zinc-900">
+                    <tr
+                      key={p.id}
+                      className="border-b border-zinc-100 last:border-0 dark:border-zinc-900"
+                    >
                       <td className="py-2 pr-4">
                         <Link
                           href={`/projects/${p.id}`}
@@ -239,7 +259,9 @@ export default async function DashboardPage() {
                           {p.project_code} · {p.project_name}
                         </Link>
                       </td>
-                      <td className="py-2 pr-4 text-red-600 dark:text-red-400">{p.daysOverdue} วัน</td>
+                      <td className="py-2 pr-4 text-red-600 dark:text-red-400">
+                        {p.daysOverdue} วัน
+                      </td>
                       <td className="py-2 pr-4">{Number(p.progress_percent)}%</td>
                       <td className="py-2 pr-4">
                         <ProjectStatusBadge status={p.status} />

@@ -21,7 +21,11 @@ export async function addMember(_prev: ActionState, formData: FormData): Promise
   } = await supabase.auth.getUser();
   if (!user) return { error: "กรุณาเข้าสู่ระบบ" };
 
-  const { data: profile } = await supabase.from("profiles").select("role").eq("id", user.id).single();
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("role")
+    .eq("id", user.id)
+    .single();
   if (!profile || !canManageProjects(profile.role)) {
     return { error: "คุณไม่มีสิทธิ์เพิ่มสมาชิก" };
   }
@@ -67,15 +71,24 @@ export async function removeMember(_prev: ActionState, formData: FormData): Prom
   } = await supabase.auth.getUser();
   if (!user) return { error: "กรุณาเข้าสู่ระบบ" };
 
-  const { data: profile } = await supabase.from("profiles").select("role").eq("id", user.id).single();
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("role")
+    .eq("id", user.id)
+    .single();
   if (!profile || !canManageProjects(profile.role)) {
     return { error: "คุณไม่มีสิทธิ์ลบสมาชิก" };
   }
 
   const { data: before } = await supabase.from("project_members").select("*").eq("id", id).single();
 
-  const { error } = await supabase.from("project_members").delete().eq("id", id);
+  const { data: deleted, error } = await supabase
+    .from("project_members")
+    .delete()
+    .eq("id", id)
+    .select("id");
   if (error) return { error: `ลบสมาชิกไม่สำเร็จ: ${error.message}` };
+  if (!deleted || deleted.length === 0) return { error: "คุณไม่มีสิทธิ์ลบสมาชิกนี้" };
 
   if (before) {
     await logActivity(supabase, {

@@ -28,7 +28,7 @@ export function EditTaskForm({
   return (
     <form
       action={formAction}
-      className="grid gap-4 rounded-xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900 sm:grid-cols-2"
+      className="grid gap-4 rounded-xl border border-zinc-200 bg-white p-6 sm:grid-cols-2 dark:border-zinc-800 dark:bg-zinc-900"
     >
       <input type="hidden" name="id" value={task.id} />
 
@@ -40,7 +40,12 @@ export function EditTaskForm({
           </div>
           <div className="sm:col-span-2">
             <label className={labelClass}>Task Description</label>
-            <textarea name="task_description" rows={2} defaultValue={task.task_description ?? ""} className={inputClass} />
+            <textarea
+              name="task_description"
+              rows={2}
+              defaultValue={task.task_description ?? ""}
+              className={inputClass}
+            />
           </div>
           <div>
             <label className={labelClass}>Assigned To</label>
@@ -56,23 +61,50 @@ export function EditTaskForm({
           <div />
           <div>
             <label className={labelClass}>Planned Start Date</label>
-            <input type="date" name="planned_start_date" defaultValue={task.planned_start_date ?? ""} className={inputClass} />
+            <input
+              type="date"
+              name="planned_start_date"
+              defaultValue={task.planned_start_date ?? ""}
+              className={inputClass}
+            />
           </div>
           <div>
             <label className={labelClass}>Planned End Date</label>
-            <input type="date" name="planned_end_date" defaultValue={task.planned_end_date ?? ""} className={inputClass} />
+            <input
+              type="date"
+              name="planned_end_date"
+              defaultValue={task.planned_end_date ?? ""}
+              className={inputClass}
+            />
           </div>
           <div>
             <label className={labelClass}>Actual Start Date</label>
-            <input type="date" name="actual_start_date" defaultValue={task.actual_start_date ?? ""} className={inputClass} />
+            <input
+              type="date"
+              name="actual_start_date"
+              defaultValue={task.actual_start_date ?? ""}
+              className={inputClass}
+            />
           </div>
           <div>
             <label className={labelClass}>Actual End Date</label>
-            <input type="date" name="actual_end_date" defaultValue={task.actual_end_date ?? ""} className={inputClass} />
+            <input
+              type="date"
+              name="actual_end_date"
+              defaultValue={task.actual_end_date ?? ""}
+              className={inputClass}
+            />
           </div>
           <div>
             <label className={labelClass}>Planned Hour</label>
-            <input type="number" step="0.5" min="0" name="planned_hour" defaultValue={task.planned_hour} className={inputClass} />
+            <input
+              type="number"
+              step="0.5"
+              min="0"
+              name="planned_hour"
+              defaultValue={task.planned_hour}
+              className={inputClass}
+            />
           </div>
           <div>
             <label className={labelClass}>Planned Man-Day</label>

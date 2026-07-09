@@ -91,9 +91,16 @@ export default async function ProjectSummaryReportPage({
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-2xl font-bold">Project Summary Report</h1>
-            <p className="mt-1 text-sm text-zinc-500">Progress, Man-Day, Cost และ Variance ของทุก Project</p>
+            <p className="mt-1 text-sm text-zinc-500">
+              Progress, Man-Day, Cost และ Variance ของทุก Project
+            </p>
           </div>
-          <ExportButton columns={columns} rows={exportRows} filename="project-summary" title="Project Summary Report" />
+          <ExportButton
+            columns={columns}
+            rows={exportRows}
+            filename="project-summary"
+            title="Project Summary Report"
+          />
         </div>
 
         <div className="mt-4">
@@ -115,7 +122,10 @@ export default async function ProjectSummaryReportPage({
             </thead>
             <tbody>
               {rows.map((p) => (
-                <tr key={p.id} className="border-b border-zinc-100 last:border-0 dark:border-zinc-900">
+                <tr
+                  key={p.id}
+                  className="border-b border-zinc-100 last:border-0 dark:border-zinc-900"
+                >
                   <td className="py-2 pr-4">
                     <Link
                       href={`/projects/${p.id}`}
@@ -124,16 +134,26 @@ export default async function ProjectSummaryReportPage({
                       {p.project_code} · {p.project_name}
                     </Link>
                   </td>
-                  <td className="py-2 pr-4 text-zinc-600 dark:text-zinc-400">{p.owner?.full_name ?? "-"}</td>
+                  <td className="py-2 pr-4 text-zinc-600 dark:text-zinc-400">
+                    {p.owner?.full_name ?? "-"}
+                  </td>
                   <td className="py-2 pr-4 text-zinc-600 dark:text-zinc-400">
                     {p.department?.department_name ?? "-"}
                   </td>
                   <td className="py-2 pr-4">{Number(p.progress_percent)}%</td>
                   <td className="py-2 pr-4">
-                    <VarianceBadge planned={Number(p.planned_man_day)} actual={Number(p.actual_man_day)} unit="MD" />
+                    <VarianceBadge
+                      planned={Number(p.planned_man_day)}
+                      actual={Number(p.actual_man_day)}
+                      unit="MD"
+                    />
                   </td>
                   <td className="py-2 pr-4">
-                    <VarianceBadge planned={Number(p.planned_cost)} actual={Number(p.actual_cost)} decimals={0} />
+                    <VarianceBadge
+                      planned={Number(p.planned_cost)}
+                      actual={Number(p.actual_cost)}
+                      decimals={0}
+                    />
                   </td>
                   <td className="py-2 pr-4">
                     <ProjectStatusBadge status={p.status} />

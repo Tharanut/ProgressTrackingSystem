@@ -38,12 +38,12 @@ export function ProjectTable({ projects }: { projects: ProjectRow[] }) {
         </thead>
         <tbody>
           {projects.map((p) => (
-            <tr
-              key={p.id}
-              className="border-b border-zinc-100 last:border-0 dark:border-zinc-900"
-            >
+            <tr key={p.id} className="border-b border-zinc-100 last:border-0 dark:border-zinc-900">
               <td className="py-2 pr-4">
-                <Link href={`/projects/${p.id}`} className="font-medium text-indigo-600 hover:underline dark:text-indigo-400">
+                <Link
+                  href={`/projects/${p.id}`}
+                  className="font-medium text-indigo-600 hover:underline dark:text-indigo-400"
+                >
                   {p.project_code}
                 </Link>
               </td>

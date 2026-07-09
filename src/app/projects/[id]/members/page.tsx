@@ -87,10 +87,15 @@ export default async function ProjectMembersPage({ params }: { params: Promise<{
                   const utilization = planned > 0 ? Math.round((actual / planned) * 100) : 0;
                   const overload = utilization > 100;
                   return (
-                    <tr key={m.id} className="border-b border-zinc-100 last:border-0 dark:border-zinc-900">
+                    <tr
+                      key={m.id}
+                      className="border-b border-zinc-100 last:border-0 dark:border-zinc-900"
+                    >
                       <td className="py-2 pr-4 font-medium">{m.employee?.full_name ?? "-"}</td>
                       <td className="py-2 pr-4">{m.project_role ?? "-"}</td>
-                      <td className="py-2 pr-4 text-zinc-600 dark:text-zinc-400">{m.responsibility ?? "-"}</td>
+                      <td className="py-2 pr-4 text-zinc-600 dark:text-zinc-400">
+                        {m.responsibility ?? "-"}
+                      </td>
                       <td className="py-2 pr-4">{planned}</td>
                       <td className="py-2 pr-4">{actual}</td>
                       <td className="py-2 pr-4">{planned > 0 ? `${utilization}%` : "-"}</td>

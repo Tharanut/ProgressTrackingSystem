@@ -25,7 +25,9 @@ export function VarianceBadge({
   const pctText = variancePercent === null ? "" : ` (${sign}${variancePercent.toFixed(0)}%)`;
 
   return (
-    <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${tone}`}>
+    <span
+      className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${tone}`}
+    >
       {sign}
       {v.toFixed(decimals)}
       {unit ? ` ${unit}` : ""}

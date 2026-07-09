@@ -21,7 +21,11 @@ export async function createTask(_prev: ActionState, formData: FormData): Promis
   } = await supabase.auth.getUser();
   if (!user) return { error: "กรุณาเข้าสู่ระบบ" };
 
-  const { data: profile } = await supabase.from("profiles").select("role").eq("id", user.id).single();
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("role")
+    .eq("id", user.id)
+    .single();
   if (!profile || !canManageProjects(profile.role)) {
     return { error: "คุณไม่มีสิทธิ์สร้าง Task" };
   }
@@ -37,7 +41,11 @@ export async function createTask(_prev: ActionState, formData: FormData): Promis
     planned_man_day: formNum(formData, "planned_man_day", 0),
   };
 
-  const { data: created, error } = await supabase.from("tasks").insert(payload).select("id").single();
+  const { data: created, error } = await supabase
+    .from("tasks")
+    .insert(payload)
+    .select("id")
+    .single();
   if (error) return { error: `สร้าง Task ไม่สำเร็จ: ${error.message}` };
 
   await logActivity(supabase, {
@@ -61,7 +69,11 @@ export async function updateTask(_prev: ActionState, formData: FormData): Promis
   } = await supabase.auth.getUser();
   if (!user) return { error: "กรุณาเข้าสู่ระบบ" };
 
-  const { data: profile } = await supabase.from("profiles").select("role").eq("id", user.id).single();
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("role")
+    .eq("id", user.id)
+    .single();
   const { data: before } = await supabase.from("tasks").select("*").eq("id", id).single();
   if (!profile || !before) return { error: "ไม่พบ Task" };
 

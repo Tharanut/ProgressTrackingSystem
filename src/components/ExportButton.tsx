@@ -2,7 +2,13 @@
 
 import { useState } from "react";
 
-import { exportToCsv, exportToExcel, exportToPdf, type ExportColumn, type ExportRow } from "@/lib/export";
+import {
+  exportToCsv,
+  exportToExcel,
+  exportToPdf,
+  type ExportColumn,
+  type ExportRow,
+} from "@/lib/export";
 
 export function ExportButton({
   columns,
@@ -33,13 +39,28 @@ export function ExportButton({
 
   return (
     <div className="flex gap-2">
-      <button type="button" disabled={busy !== null} onClick={() => handle("excel")} className={btnClass}>
+      <button
+        type="button"
+        disabled={busy !== null}
+        onClick={() => handle("excel")}
+        className={btnClass}
+      >
         {busy === "excel" ? "..." : "Export Excel"}
       </button>
-      <button type="button" disabled={busy !== null} onClick={() => handle("pdf")} className={btnClass}>
+      <button
+        type="button"
+        disabled={busy !== null}
+        onClick={() => handle("pdf")}
+        className={btnClass}
+      >
         {busy === "pdf" ? "..." : "Export PDF"}
       </button>
-      <button type="button" disabled={busy !== null} onClick={() => handle("csv")} className={btnClass}>
+      <button
+        type="button"
+        disabled={busy !== null}
+        onClick={() => handle("csv")}
+        className={btnClass}
+      >
         {busy === "csv" ? "..." : "Export CSV"}
       </button>
     </div>

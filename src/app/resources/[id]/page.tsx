@@ -43,7 +43,9 @@ export default async function ResourceDetailPage({ params }: { params: Promise<{
   const [{ data: membershipData }, { data: taskData }] = await Promise.all([
     supabase
       .from("project_members")
-      .select("project_id, project_role, planned_man_day, actual_man_day, project:projects(project_code, project_name)")
+      .select(
+        "project_id, project_role, planned_man_day, actual_man_day, project:projects(project_code, project_name)",
+      )
       .eq("user_id", id),
     supabase
       .from("tasks")
@@ -104,7 +106,10 @@ export default async function ResourceDetailPage({ params }: { params: Promise<{
                 </thead>
                 <tbody>
                   {memberships.map((m) => (
-                    <tr key={m.project_id} className="border-b border-zinc-100 last:border-0 dark:border-zinc-900">
+                    <tr
+                      key={m.project_id}
+                      className="border-b border-zinc-100 last:border-0 dark:border-zinc-900"
+                    >
                       <td className="py-2 pr-4">
                         <Link
                           href={`/projects/${m.project_id}`}
@@ -113,7 +118,9 @@ export default async function ResourceDetailPage({ params }: { params: Promise<{
                           {m.project?.project_code} · {m.project?.project_name}
                         </Link>
                       </td>
-                      <td className="py-2 pr-4 text-zinc-600 dark:text-zinc-400">{m.project_role ?? "-"}</td>
+                      <td className="py-2 pr-4 text-zinc-600 dark:text-zinc-400">
+                        {m.project_role ?? "-"}
+                      </td>
                       <td className="py-2 pr-4">{m.planned_man_day}</td>
                       <td className="py-2 pr-4">{m.actual_man_day}</td>
                     </tr>
@@ -140,7 +147,10 @@ export default async function ResourceDetailPage({ params }: { params: Promise<{
                 </thead>
                 <tbody>
                   {tasks.map((t) => (
-                    <tr key={t.id} className="border-b border-zinc-100 last:border-0 dark:border-zinc-900">
+                    <tr
+                      key={t.id}
+                      className="border-b border-zinc-100 last:border-0 dark:border-zinc-900"
+                    >
                       <td className="py-2 pr-4">
                         <Link
                           href={`/projects/${t.project_id}/tasks/${t.id}`}
@@ -153,7 +163,9 @@ export default async function ResourceDetailPage({ params }: { params: Promise<{
                         <ProgressBar percent={Number(t.progress_percent)} />
                       </td>
                       <td className="py-2 pr-4">
-                        <TaskStatusBadge status={t.status as "pending" | "in_progress" | "done" | "delayed"} />
+                        <TaskStatusBadge
+                          status={t.status as "pending" | "in_progress" | "done" | "delayed"}
+                        />
                       </td>
                     </tr>
                   ))}

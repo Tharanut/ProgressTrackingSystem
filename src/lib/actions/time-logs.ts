@@ -24,7 +24,11 @@ export async function createTimeLog(_prev: ActionState, formData: FormData): Pro
 
   const task_id = formStr(formData, "task_id");
   if (task_id) {
-    const { data: task } = await supabase.from("tasks").select("project_id").eq("id", task_id).single();
+    const { data: task } = await supabase
+      .from("tasks")
+      .select("project_id")
+      .eq("id", task_id)
+      .single();
     if (!task || task.project_id !== project_id) {
       return { error: "Task ที่เลือกไม่ตรงกับ Project" };
     }
@@ -40,7 +44,11 @@ export async function createTimeLog(_prev: ActionState, formData: FormData): Pro
     issue_blocker: formStr(formData, "issue_blocker"),
   };
 
-  const { data: created, error } = await supabase.from("time_logs").insert(payload).select("id").single();
+  const { data: created, error } = await supabase
+    .from("time_logs")
+    .insert(payload)
+    .select("id")
+    .single();
   if (error) return { error: `บันทึกเวลาไม่สำเร็จ: ${error.message}` };
 
   await logActivity(supabase, {
@@ -64,7 +72,11 @@ export async function deleteTimeLog(_prev: ActionState, formData: FormData): Pro
   const { data: before } = await supabase.from("time_logs").select("*").eq("id", id).single();
 
   // RLS restricts delete to the owner (or admin); a mismatched id simply deletes 0 rows.
-  const { data: deleted, error } = await supabase.from("time_logs").delete().eq("id", id).select("id");
+  const { data: deleted, error } = await supabase
+    .from("time_logs")
+    .delete()
+    .eq("id", id)
+    .select("id");
   if (error) return { error: `ลบรายการไม่สำเร็จ: ${error.message}` };
   if (!deleted || deleted.length === 0) return { error: "คุณไม่มีสิทธิ์ลบรายการนี้" };
 

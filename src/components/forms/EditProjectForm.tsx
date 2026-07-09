@@ -27,17 +27,26 @@ export function EditProjectForm({
   return (
     <form
       action={formAction}
-      className="grid gap-4 rounded-xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900 sm:grid-cols-2"
+      className="grid gap-4 rounded-xl border border-zinc-200 bg-white p-6 sm:grid-cols-2 dark:border-zinc-800 dark:bg-zinc-900"
     >
       <input type="hidden" name="id" value={project.id} />
 
       <div className="sm:col-span-2">
         <label className={labelClass}>Project Name</label>
-        <input name="project_name" defaultValue={project.project_name} required className={inputClass} />
+        <input
+          name="project_name"
+          defaultValue={project.project_name}
+          required
+          className={inputClass}
+        />
       </div>
       <div>
         <label className={labelClass}>Owner</label>
-        <select name="project_owner_id" defaultValue={project.project_owner_id ?? ""} className={inputClass}>
+        <select
+          name="project_owner_id"
+          defaultValue={project.project_owner_id ?? ""}
+          className={inputClass}
+        >
           <option value="">- ไม่ระบุ -</option>
           {profiles.map((p) => (
             <option key={p.id} value={p.id}>
@@ -48,7 +57,11 @@ export function EditProjectForm({
       </div>
       <div>
         <label className={labelClass}>Department</label>
-        <select name="department_id" defaultValue={project.department_id ?? ""} className={inputClass}>
+        <select
+          name="department_id"
+          defaultValue={project.department_id ?? ""}
+          className={inputClass}
+        >
           <option value="">- ไม่ระบุ -</option>
           {departments.map((d) => (
             <option key={d.id} value={d.id}>
@@ -79,19 +92,39 @@ export function EditProjectForm({
       </div>
       <div>
         <label className={labelClass}>Planned Start Date</label>
-        <input type="date" name="planned_start_date" defaultValue={project.planned_start_date ?? ""} className={inputClass} />
+        <input
+          type="date"
+          name="planned_start_date"
+          defaultValue={project.planned_start_date ?? ""}
+          className={inputClass}
+        />
       </div>
       <div>
         <label className={labelClass}>Planned End Date</label>
-        <input type="date" name="planned_end_date" defaultValue={project.planned_end_date ?? ""} className={inputClass} />
+        <input
+          type="date"
+          name="planned_end_date"
+          defaultValue={project.planned_end_date ?? ""}
+          className={inputClass}
+        />
       </div>
       <div>
         <label className={labelClass}>Actual Start Date</label>
-        <input type="date" name="actual_start_date" defaultValue={project.actual_start_date ?? ""} className={inputClass} />
+        <input
+          type="date"
+          name="actual_start_date"
+          defaultValue={project.actual_start_date ?? ""}
+          className={inputClass}
+        />
       </div>
       <div>
         <label className={labelClass}>Actual End Date</label>
-        <input type="date" name="actual_end_date" defaultValue={project.actual_end_date ?? ""} className={inputClass} />
+        <input
+          type="date"
+          name="actual_end_date"
+          defaultValue={project.actual_end_date ?? ""}
+          className={inputClass}
+        />
       </div>
       <div>
         <label className={labelClass}>Planned Man-Day</label>
@@ -117,7 +150,12 @@ export function EditProjectForm({
       </div>
       <div className="sm:col-span-2">
         <label className={labelClass}>Description</label>
-        <textarea name="description" rows={2} defaultValue={project.description ?? ""} className={inputClass} />
+        <textarea
+          name="description"
+          rows={2}
+          defaultValue={project.description ?? ""}
+          className={inputClass}
+        />
       </div>
 
       {state.error && (

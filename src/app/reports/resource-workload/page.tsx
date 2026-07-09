@@ -65,7 +65,12 @@ export default async function ResourceWorkloadReportPage() {
             <h1 className="text-2xl font-bold">Resource Workload Report</h1>
             <p className="mt-1 text-sm text-zinc-500">Workload และ Utilization ของพนักงานทุกคน</p>
           </div>
-          <ExportButton columns={columns} rows={rows} filename="resource-workload" title="Resource Workload Report" />
+          <ExportButton
+            columns={columns}
+            rows={rows}
+            filename="resource-workload"
+            title="Resource Workload Report"
+          />
         </div>
 
         <div className="mt-6 overflow-x-auto rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
@@ -81,7 +86,10 @@ export default async function ResourceWorkloadReportPage() {
             </thead>
             <tbody>
               {rows.map((r) => (
-                <tr key={r.employee_code + r.full_name} className="border-b border-zinc-100 last:border-0 dark:border-zinc-900">
+                <tr
+                  key={r.employee_code + r.full_name}
+                  className="border-b border-zinc-100 last:border-0 dark:border-zinc-900"
+                >
                   <td className="py-2 pr-4">{r.employee_code}</td>
                   <td className="py-2 pr-4 font-medium">{r.full_name}</td>
                   <td className="py-2 pr-4 text-zinc-600 dark:text-zinc-400">{r.department}</td>

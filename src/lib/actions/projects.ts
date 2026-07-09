@@ -18,7 +18,11 @@ export async function createProject(_prev: ActionState, formData: FormData): Pro
   } = await supabase.auth.getUser();
   if (!user) return { error: "กรุณาเข้าสู่ระบบ" };
 
-  const { data: profile } = await supabase.from("profiles").select("role").eq("id", user.id).single();
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("role")
+    .eq("id", user.id)
+    .single();
   if (!profile || !canManageProjects(profile.role)) {
     return { error: "คุณไม่มีสิทธิ์สร้าง Project" };
   }
@@ -74,7 +78,11 @@ export async function updateProject(_prev: ActionState, formData: FormData): Pro
   } = await supabase.auth.getUser();
   if (!user) return { error: "กรุณาเข้าสู่ระบบ" };
 
-  const { data: profile } = await supabase.from("profiles").select("role").eq("id", user.id).single();
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("role")
+    .eq("id", user.id)
+    .single();
   if (!profile || !canManageProjects(profile.role)) {
     return { error: "คุณไม่มีสิทธิ์แก้ไข Project" };
   }
@@ -100,8 +108,13 @@ export async function updateProject(_prev: ActionState, formData: FormData): Pro
     description: formStr(formData, "description"),
   };
 
-  const { error } = await supabase.from("projects").update(payload).eq("id", id);
+  const { data: updated, error } = await supabase
+    .from("projects")
+    .update(payload)
+    .eq("id", id)
+    .select("id");
   if (error) return { error: `แก้ไข Project ไม่สำเร็จ: ${error.message}` };
+  if (!updated || updated.length === 0) return { error: "คุณไม่มีสิทธิ์แก้ไข Project นี้" };
 
   await logActivity(supabase, {
     entityType: "project",

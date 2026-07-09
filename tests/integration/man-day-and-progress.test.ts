@@ -60,11 +60,27 @@ describe("Man-Day & Progress % triggers (docs/spec.md §9.1, §9.5 Option 3)", (
     const taskB = await createTestTask(admin, projectId, { planned_man_day: 6 });
 
     await wichai.from("time_logs").insert([
-      { project_id: projectId, task_id: taskA.id, user_id: SEED_USER_ID.member1, work_date: "2026-07-20", work_hour: 8 },
-      { project_id: projectId, task_id: taskB.id, user_id: SEED_USER_ID.member1, work_date: "2026-07-21", work_hour: 24 },
+      {
+        project_id: projectId,
+        task_id: taskA.id,
+        user_id: SEED_USER_ID.member1,
+        work_date: "2026-07-20",
+        work_hour: 8,
+      },
+      {
+        project_id: projectId,
+        task_id: taskB.id,
+        user_id: SEED_USER_ID.member1,
+        work_date: "2026-07-21",
+        work_hour: 24,
+      },
     ]);
 
-    const { data: project } = await admin.from("projects").select("actual_man_day").eq("id", projectId).single();
+    const { data: project } = await admin
+      .from("projects")
+      .select("actual_man_day")
+      .eq("id", projectId)
+      .single();
     expect(Number(project?.actual_man_day)).toBe(4); // 1 MD + 3 MD
   });
 
@@ -77,7 +93,11 @@ describe("Man-Day & Progress % triggers (docs/spec.md §9.1, §9.5 Option 3)", (
     await admin.from("tasks").update({ progress_percent: 100 }).eq("id", taskA.id);
     await admin.from("tasks").update({ progress_percent: 50 }).eq("id", taskB.id);
 
-    const { data: project } = await admin.from("projects").select("progress_percent").eq("id", projectId).single();
+    const { data: project } = await admin
+      .from("projects")
+      .select("progress_percent")
+      .eq("id", projectId)
+      .single();
     expect(Number(project?.progress_percent)).toBe(70);
   });
 
@@ -98,7 +118,11 @@ describe("Man-Day & Progress % triggers (docs/spec.md §9.1, §9.5 Option 3)", (
 
     await wichai.from("time_logs").delete().eq("id", log!.id);
 
-    const { data: updated } = await admin.from("tasks").select("actual_hour, actual_man_day").eq("id", task.id).single();
+    const { data: updated } = await admin
+      .from("tasks")
+      .select("actual_hour, actual_man_day")
+      .eq("id", task.id)
+      .single();
     expect(Number(updated?.actual_hour)).toBe(0);
     expect(Number(updated?.actual_man_day)).toBe(0);
   });

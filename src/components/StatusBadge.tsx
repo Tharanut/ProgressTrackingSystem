@@ -23,7 +23,9 @@ const TASK_COLORS: Record<TaskStatus, string> = {
 };
 
 export function ProjectStatusBadge({ status }: { status: ProjectStatus }) {
-  return <span className={`${TONE} ${PROJECT_COLORS[status]}`}>{PROJECT_STATUS_LABELS[status]}</span>;
+  return (
+    <span className={`${TONE} ${PROJECT_COLORS[status]}`}>{PROJECT_STATUS_LABELS[status]}</span>
+  );
 }
 
 export function TaskStatusBadge({ status }: { status: TaskStatus }) {
