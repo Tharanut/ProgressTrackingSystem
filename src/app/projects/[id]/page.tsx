@@ -40,7 +40,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       <main className="mx-auto w-full max-w-4xl flex-1 px-6 py-10">
         <div className="flex items-center justify-between">
           <div>
-            <div className="flex items-center gap-2 text-sm text-zinc-500">
+            <div className="flex items-center gap-2 text-sm text-slate-500">
               <Link href="/projects" className="hover:underline">
                 Projects
               </Link>
@@ -55,19 +55,19 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         <div className="mt-4 flex gap-4 text-sm">
           <Link
             href={`/projects/${id}/tasks`}
-            className="text-indigo-600 hover:underline dark:text-indigo-400"
+            className="text-sky-600 hover:underline dark:text-sky-400"
           >
             Tasks →
           </Link>
           <Link
             href={`/projects/${id}/members`}
-            className="text-indigo-600 hover:underline dark:text-indigo-400"
+            className="text-sky-600 hover:underline dark:text-sky-400"
           >
             Members →
           </Link>
           <Link
             href={`/projects/${id}/planned-vs-actual`}
-            className="text-indigo-600 hover:underline dark:text-indigo-400"
+            className="text-sky-600 hover:underline dark:text-sky-400"
           >
             Planned vs Actual →
           </Link>
@@ -104,7 +104,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             </div>
           </RoleGuard>
           {profile.role !== "admin" && profile.role !== "pm" && (
-            <dl className="mt-3 grid gap-x-8 gap-y-2 rounded-xl border border-zinc-200 bg-white p-6 text-sm sm:grid-cols-2 dark:border-zinc-800 dark:bg-zinc-900">
+            <dl className="mt-3 grid gap-x-8 gap-y-2 rounded-xl border border-slate-200 bg-white p-6 text-sm shadow-sm sm:grid-cols-2 dark:border-slate-800 dark:bg-slate-900">
               <Row label="Owner" value={owner?.full_name} />
               <Row label="Department" value={department?.department_name} />
               <Row label="Planned Start" value={project.planned_start_date} />
@@ -123,8 +123,8 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
 function Row({ label, value }: { label: string; value?: string | null }) {
   return (
-    <div className="flex justify-between border-b border-zinc-100 py-1 dark:border-zinc-800">
-      <dt className="text-zinc-500">{label}</dt>
+    <div className="flex justify-between border-b border-slate-100 py-1 dark:border-slate-800">
+      <dt className="text-slate-500">{label}</dt>
       <dd className="font-medium">{value ?? "-"}</dd>
     </div>
   );

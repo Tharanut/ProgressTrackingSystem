@@ -23,7 +23,7 @@ export function NewTimeLogForm({
   return (
     <form
       action={formAction}
-      className="grid gap-4 rounded-xl border border-zinc-200 bg-white p-6 sm:grid-cols-2 dark:border-zinc-800 dark:bg-zinc-900"
+      className="grid gap-4 rounded-xl border border-slate-200 bg-white p-6 shadow-sm sm:grid-cols-2 dark:border-slate-800 dark:bg-slate-900"
     >
       <div>
         <label className={labelClass}>Project</label>

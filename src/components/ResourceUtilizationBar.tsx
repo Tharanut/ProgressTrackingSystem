@@ -6,11 +6,11 @@ export function ResourceUtilizationBar({ percent }: { percent: number }) {
 
   return (
     <div className="flex items-center gap-2">
-      <div className="h-2 w-full max-w-32 overflow-hidden rounded-full bg-zinc-200 dark:bg-zinc-800">
+      <div className="h-2 w-full max-w-32 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800">
         <div className={`h-full ${tone}`} style={{ width: `${clamped}%` }} />
       </div>
       <span
-        className={`w-12 shrink-0 text-xs ${overload ? "font-semibold text-red-600 dark:text-red-400" : "text-zinc-500"}`}
+        className={`w-12 shrink-0 text-xs ${overload ? "font-semibold text-red-600 dark:text-red-400" : "text-slate-500"}`}
       >
         {Math.round(percent)}%
       </span>

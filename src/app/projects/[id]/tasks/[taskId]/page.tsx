@@ -56,7 +56,7 @@ export default async function TaskDetailPage({
     <>
       <AppNav profile={profile} />
       <main className="mx-auto w-full max-w-4xl flex-1 px-6 py-10">
-        <div className="flex items-center gap-2 text-sm text-zinc-500">
+        <div className="flex items-center gap-2 text-sm text-slate-500">
           <Link href="/projects" className="hover:underline">
             Projects
           </Link>
@@ -89,13 +89,13 @@ export default async function TaskDetailPage({
             <QuickTimeLogForm projectId={id} taskId={taskId} />
           </div>
 
-          <div className="mt-6 overflow-x-auto rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
+          <div className="mt-6 overflow-x-auto rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
             {logs.length === 0 ? (
-              <p className="py-4 text-center text-sm text-zinc-500">ยังไม่มีรายการเวลาทำงาน</p>
+              <p className="py-4 text-center text-sm text-slate-500">ยังไม่มีรายการเวลาทำงาน</p>
             ) : (
               <table className="w-full min-w-max text-left text-sm">
                 <thead>
-                  <tr className="border-b border-zinc-200 text-zinc-500 dark:border-zinc-800">
+                  <tr className="border-b border-slate-200 text-slate-500 dark:border-slate-800">
                     <th className="py-2 pr-4 font-medium">Date</th>
                     <th className="py-2 pr-4 font-medium">Employee</th>
                     <th className="py-2 pr-4 font-medium">Hours</th>
@@ -108,15 +108,15 @@ export default async function TaskDetailPage({
                   {logs.map((l) => (
                     <tr
                       key={l.id}
-                      className="border-b border-zinc-100 last:border-0 dark:border-zinc-900"
+                      className="border-b border-slate-100 last:border-0 dark:border-slate-900"
                     >
                       <td className="py-2 pr-4">{l.work_date}</td>
                       <td className="py-2 pr-4">{l.employee?.full_name ?? "-"}</td>
                       <td className="py-2 pr-4">{l.work_hour}</td>
-                      <td className="py-2 pr-4 text-zinc-600 dark:text-zinc-400">
+                      <td className="py-2 pr-4 text-slate-600 dark:text-slate-400">
                         {l.work_detail ?? "-"}
                       </td>
-                      <td className="py-2 pr-4 text-zinc-600 dark:text-zinc-400">
+                      <td className="py-2 pr-4 text-slate-600 dark:text-slate-400">
                         {l.issue_blocker ?? "-"}
                       </td>
                       <td className="py-2 pr-4">

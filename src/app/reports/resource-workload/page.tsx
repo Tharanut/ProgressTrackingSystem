@@ -63,7 +63,7 @@ export default async function ResourceWorkloadReportPage() {
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-2xl font-bold">Resource Workload Report</h1>
-            <p className="mt-1 text-sm text-zinc-500">Workload และ Utilization ของพนักงานทุกคน</p>
+            <p className="mt-1 text-sm text-slate-500">Workload และ Utilization ของพนักงานทุกคน</p>
           </div>
           <ExportButton
             columns={columns}
@@ -73,10 +73,10 @@ export default async function ResourceWorkloadReportPage() {
           />
         </div>
 
-        <div className="mt-6 overflow-x-auto rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
+        <div className="mt-6 overflow-x-auto rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
           <table className="w-full min-w-max text-left text-sm">
             <thead>
-              <tr className="border-b border-zinc-200 text-zinc-500 dark:border-zinc-800">
+              <tr className="border-b border-slate-200 text-slate-500 dark:border-slate-800">
                 {columns.map((c) => (
                   <th key={c.key} className="py-2 pr-4 font-medium">
                     {c.label}
@@ -88,11 +88,11 @@ export default async function ResourceWorkloadReportPage() {
               {rows.map((r) => (
                 <tr
                   key={r.employee_code + r.full_name}
-                  className="border-b border-zinc-100 last:border-0 dark:border-zinc-900"
+                  className="border-b border-slate-100 last:border-0 dark:border-slate-900"
                 >
                   <td className="py-2 pr-4">{r.employee_code}</td>
                   <td className="py-2 pr-4 font-medium">{r.full_name}</td>
-                  <td className="py-2 pr-4 text-zinc-600 dark:text-zinc-400">{r.department}</td>
+                  <td className="py-2 pr-4 text-slate-600 dark:text-slate-400">{r.department}</td>
                   <td className="py-2 pr-4">{r.projects}</td>
                   <td className="py-2 pr-4">{r.tasks}</td>
                   <td className="py-2 pr-4">{r.planned_man_day}</td>

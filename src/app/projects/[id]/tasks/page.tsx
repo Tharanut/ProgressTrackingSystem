@@ -58,7 +58,7 @@ export default async function ProjectTasksPage({ params }: { params: Promise<{ i
     <>
       <AppNav profile={profile} />
       <main className="mx-auto w-full max-w-4xl flex-1 px-6 py-10">
-        <div className="flex items-center gap-2 text-sm text-zinc-500">
+        <div className="flex items-center gap-2 text-sm text-slate-500">
           <Link href="/projects" className="hover:underline">
             Projects
           </Link>
@@ -71,7 +71,7 @@ export default async function ProjectTasksPage({ params }: { params: Promise<{ i
         </div>
         <h1 className="mt-1 text-2xl font-bold">Tasks — {project.project_name}</h1>
 
-        <section className="mt-6 rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
+        <section className="mt-6 rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
           <TaskTable projectId={id} tasks={tasks} />
         </section>
 

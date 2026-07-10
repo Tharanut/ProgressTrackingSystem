@@ -65,7 +65,7 @@ export default async function ResourceDetailPage({ params }: { params: Promise<{
     <>
       <AppNav profile={profile} />
       <main className="mx-auto w-full max-w-4xl flex-1 px-6 py-10">
-        <div className="flex items-center gap-2 text-sm text-zinc-500">
+        <div className="flex items-center gap-2 text-sm text-slate-500">
           <Link href="/resources" className="hover:underline">
             Resources
           </Link>
@@ -73,7 +73,7 @@ export default async function ResourceDetailPage({ params }: { params: Promise<{
           <span>{person.full_name}</span>
         </div>
         <h1 className="mt-1 text-2xl font-bold">{person.full_name}</h1>
-        <p className="mt-1 text-sm text-zinc-500">
+        <p className="mt-1 text-sm text-slate-500">
           {ROLE_LABELS[person.role]} · {person.departments?.department_name ?? "-"} ·{" "}
           {person.employee_code ?? "-"}
         </p>
@@ -91,13 +91,13 @@ export default async function ResourceDetailPage({ params }: { params: Promise<{
 
         <section className="mt-8">
           <h2 className="text-lg font-semibold">Projects</h2>
-          <div className="mt-3 overflow-x-auto rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
+          <div className="mt-3 overflow-x-auto rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
             {memberships.length === 0 ? (
-              <p className="py-4 text-center text-sm text-zinc-500">ยังไม่มี Project</p>
+              <p className="py-4 text-center text-sm text-slate-500">ยังไม่มี Project</p>
             ) : (
               <table className="w-full min-w-max text-left text-sm">
                 <thead>
-                  <tr className="border-b border-zinc-200 text-zinc-500 dark:border-zinc-800">
+                  <tr className="border-b border-slate-200 text-slate-500 dark:border-slate-800">
                     <th className="py-2 pr-4 font-medium">Project</th>
                     <th className="py-2 pr-4 font-medium">Role</th>
                     <th className="py-2 pr-4 font-medium">Planned MD</th>
@@ -108,17 +108,17 @@ export default async function ResourceDetailPage({ params }: { params: Promise<{
                   {memberships.map((m) => (
                     <tr
                       key={m.project_id}
-                      className="border-b border-zinc-100 last:border-0 dark:border-zinc-900"
+                      className="border-b border-slate-100 last:border-0 dark:border-slate-900"
                     >
                       <td className="py-2 pr-4">
                         <Link
                           href={`/projects/${m.project_id}`}
-                          className="font-medium text-indigo-600 hover:underline dark:text-indigo-400"
+                          className="font-medium text-sky-600 hover:underline dark:text-sky-400"
                         >
                           {m.project?.project_code} · {m.project?.project_name}
                         </Link>
                       </td>
-                      <td className="py-2 pr-4 text-zinc-600 dark:text-zinc-400">
+                      <td className="py-2 pr-4 text-slate-600 dark:text-slate-400">
                         {m.project_role ?? "-"}
                       </td>
                       <td className="py-2 pr-4">{m.planned_man_day}</td>
@@ -133,13 +133,13 @@ export default async function ResourceDetailPage({ params }: { params: Promise<{
 
         <section className="mt-8">
           <h2 className="text-lg font-semibold">Tasks</h2>
-          <div className="mt-3 overflow-x-auto rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
+          <div className="mt-3 overflow-x-auto rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
             {tasks.length === 0 ? (
-              <p className="py-4 text-center text-sm text-zinc-500">ยังไม่มี Task</p>
+              <p className="py-4 text-center text-sm text-slate-500">ยังไม่มี Task</p>
             ) : (
               <table className="w-full min-w-max text-left text-sm">
                 <thead>
-                  <tr className="border-b border-zinc-200 text-zinc-500 dark:border-zinc-800">
+                  <tr className="border-b border-slate-200 text-slate-500 dark:border-slate-800">
                     <th className="py-2 pr-4 font-medium">Task</th>
                     <th className="py-2 pr-4 font-medium">Progress</th>
                     <th className="py-2 pr-4 font-medium">Status</th>
@@ -149,12 +149,12 @@ export default async function ResourceDetailPage({ params }: { params: Promise<{
                   {tasks.map((t) => (
                     <tr
                       key={t.id}
-                      className="border-b border-zinc-100 last:border-0 dark:border-zinc-900"
+                      className="border-b border-slate-100 last:border-0 dark:border-slate-900"
                     >
                       <td className="py-2 pr-4">
                         <Link
                           href={`/projects/${t.project_id}/tasks/${t.id}`}
-                          className="font-medium text-indigo-600 hover:underline dark:text-indigo-400"
+                          className="font-medium text-sky-600 hover:underline dark:text-sky-400"
                         >
                           {t.project?.project_code} · {t.task_name}
                         </Link>

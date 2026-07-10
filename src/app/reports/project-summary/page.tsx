@@ -91,7 +91,7 @@ export default async function ProjectSummaryReportPage({
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-2xl font-bold">Project Summary Report</h1>
-            <p className="mt-1 text-sm text-zinc-500">
+            <p className="mt-1 text-sm text-slate-500">
               Progress, Man-Day, Cost และ Variance ของทุก Project
             </p>
           </div>
@@ -107,10 +107,10 @@ export default async function ProjectSummaryReportPage({
           <DateRangeFilter from={from} to={to} />
         </div>
 
-        <div className="mt-6 overflow-x-auto rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
+        <div className="mt-6 overflow-x-auto rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
           <table className="w-full min-w-max text-left text-sm">
             <thead>
-              <tr className="border-b border-zinc-200 text-zinc-500 dark:border-zinc-800">
+              <tr className="border-b border-slate-200 text-slate-500 dark:border-slate-800">
                 <th className="py-2 pr-4 font-medium">Project</th>
                 <th className="py-2 pr-4 font-medium">Owner</th>
                 <th className="py-2 pr-4 font-medium">Department</th>
@@ -124,20 +124,20 @@ export default async function ProjectSummaryReportPage({
               {rows.map((p) => (
                 <tr
                   key={p.id}
-                  className="border-b border-zinc-100 last:border-0 dark:border-zinc-900"
+                  className="border-b border-slate-100 last:border-0 dark:border-slate-900"
                 >
                   <td className="py-2 pr-4">
                     <Link
                       href={`/projects/${p.id}`}
-                      className="font-medium text-indigo-600 hover:underline dark:text-indigo-400"
+                      className="font-medium text-sky-600 hover:underline dark:text-sky-400"
                     >
                       {p.project_code} · {p.project_name}
                     </Link>
                   </td>
-                  <td className="py-2 pr-4 text-zinc-600 dark:text-zinc-400">
+                  <td className="py-2 pr-4 text-slate-600 dark:text-slate-400">
                     {p.owner?.full_name ?? "-"}
                   </td>
-                  <td className="py-2 pr-4 text-zinc-600 dark:text-zinc-400">
+                  <td className="py-2 pr-4 text-slate-600 dark:text-slate-400">
                     {p.department?.department_name ?? "-"}
                   </td>
                   <td className="py-2 pr-4">{Number(p.progress_percent)}%</td>

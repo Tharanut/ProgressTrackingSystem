@@ -18,14 +18,14 @@ export type ProjectRow = {
 
 export function ProjectTable({ projects }: { projects: ProjectRow[] }) {
   if (projects.length === 0) {
-    return <p className="py-8 text-center text-sm text-zinc-500">ยังไม่มี Project</p>;
+    return <p className="py-8 text-center text-sm text-slate-500">ยังไม่มี Project</p>;
   }
 
   return (
     <div className="overflow-x-auto">
       <table className="w-full min-w-max text-left text-sm">
         <thead>
-          <tr className="border-b border-zinc-200 text-zinc-500 dark:border-zinc-800">
+          <tr className="border-b border-slate-200 text-slate-500 dark:border-slate-800">
             <th className="py-2 pr-4 font-medium">Project Code</th>
             <th className="py-2 pr-4 font-medium">Project Name</th>
             <th className="py-2 pr-4 font-medium">Owner</th>
@@ -38,18 +38,23 @@ export function ProjectTable({ projects }: { projects: ProjectRow[] }) {
         </thead>
         <tbody>
           {projects.map((p) => (
-            <tr key={p.id} className="border-b border-zinc-100 last:border-0 dark:border-zinc-900">
+            <tr
+              key={p.id}
+              className="border-b border-slate-100 last:border-0 dark:border-slate-900"
+            >
               <td className="py-2 pr-4">
                 <Link
                   href={`/projects/${p.id}`}
-                  className="font-medium text-indigo-600 hover:underline dark:text-indigo-400"
+                  className="font-medium text-sky-600 hover:underline dark:text-sky-400"
                 >
                   {p.project_code}
                 </Link>
               </td>
               <td className="py-2 pr-4">{p.project_name}</td>
-              <td className="py-2 pr-4 text-zinc-600 dark:text-zinc-400">{p.owner_name ?? "-"}</td>
-              <td className="py-2 pr-4 text-zinc-600 dark:text-zinc-400">{p.member_count}</td>
+              <td className="py-2 pr-4 text-slate-600 dark:text-slate-400">
+                {p.owner_name ?? "-"}
+              </td>
+              <td className="py-2 pr-4 text-slate-600 dark:text-slate-400">{p.member_count}</td>
               <td className="py-2 pr-4">
                 <ProgressBar percent={p.progress_percent} />
               </td>

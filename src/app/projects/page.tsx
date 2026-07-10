@@ -80,12 +80,12 @@ export default async function ProjectsPage({
             name="q"
             defaultValue={q}
             placeholder="ค้นหา Project Code / Name"
-            className="w-64 rounded-lg border border-zinc-300 bg-transparent px-3 py-2 text-sm outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 dark:border-zinc-700"
+            className="w-64 rounded-lg border border-slate-300 bg-transparent px-3 py-2 text-sm outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 dark:border-slate-700"
           />
           <select
             name="status"
             defaultValue={status ?? ""}
-            className="rounded-lg border border-zinc-300 bg-transparent px-3 py-2 text-sm outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 dark:border-zinc-700"
+            className="rounded-lg border border-slate-300 bg-transparent px-3 py-2 text-sm outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 dark:border-slate-700"
           >
             <option value="">ทุกสถานะ</option>
             {Object.entries(PROJECT_STATUS_LABELS).map(([value, label]) => (
@@ -96,13 +96,13 @@ export default async function ProjectsPage({
           </select>
           <button
             type="submit"
-            className="rounded-lg border border-zinc-300 px-4 py-2 text-sm font-medium hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-800"
+            className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium hover:bg-slate-100 dark:border-slate-700 dark:hover:bg-slate-800"
           >
             กรอง
           </button>
         </form>
 
-        <section className="mt-6 rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
+        <section className="mt-6 rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
           <ProjectTable projects={projects} />
         </section>
 
@@ -114,7 +114,7 @@ export default async function ProjectsPage({
         </RoleGuard>
 
         {!canManageProjects(profile.role) && (
-          <p className="mt-8 text-center text-xs text-zinc-400">
+          <p className="mt-8 text-center text-xs text-slate-400">
             บทบาทของคุณสามารถดูข้อมูล Project ได้อย่างเดียว
           </p>
         )}

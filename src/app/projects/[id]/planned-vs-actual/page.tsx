@@ -49,7 +49,7 @@ export default async function PlannedVsActualPage({ params }: { params: Promise<
     <>
       <AppNav profile={profile} />
       <main className="mx-auto w-full max-w-3xl flex-1 px-6 py-10">
-        <div className="flex items-center gap-2 text-sm text-zinc-500">
+        <div className="flex items-center gap-2 text-sm text-slate-500">
           <Link href="/projects" className="hover:underline">
             Projects
           </Link>
@@ -62,10 +62,10 @@ export default async function PlannedVsActualPage({ params }: { params: Promise<
         </div>
         <h1 className="mt-1 text-2xl font-bold">Planned vs Actual — {project.project_name}</h1>
 
-        <div className="mt-6 overflow-x-auto rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
+        <div className="mt-6 overflow-x-auto rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
           <table className="w-full min-w-max text-left text-sm">
             <thead>
-              <tr className="border-b border-zinc-200 text-zinc-500 dark:border-zinc-800">
+              <tr className="border-b border-slate-200 text-slate-500 dark:border-slate-800">
                 <th className="py-2 pr-4 font-medium">Item</th>
                 <th className="py-2 pr-4 font-medium">Planned</th>
                 <th className="py-2 pr-4 font-medium">Actual</th>
@@ -76,7 +76,7 @@ export default async function PlannedVsActualPage({ params }: { params: Promise<
               {rows.map((r) => (
                 <tr
                   key={r.item}
-                  className="border-b border-zinc-100 last:border-0 dark:border-zinc-900"
+                  className="border-b border-slate-100 last:border-0 dark:border-slate-900"
                 >
                   <td className="py-2 pr-4 font-medium">{r.item}</td>
                   <td className="py-2 pr-4">
@@ -91,7 +91,7 @@ export default async function PlannedVsActualPage({ params }: { params: Promise<
                   </td>
                   <td className="py-2 pr-4">
                     {r.planned === null || r.actual === null ? (
-                      <span className="text-xs text-zinc-400">ยังไม่เริ่ม</span>
+                      <span className="text-xs text-slate-400">ยังไม่เริ่ม</span>
                     ) : (
                       <VarianceBadge
                         planned={r.planned}
@@ -107,7 +107,7 @@ export default async function PlannedVsActualPage({ params }: { params: Promise<
           </table>
         </div>
 
-        <p className="mt-4 text-xs text-zinc-400">
+        <p className="mt-4 text-xs text-slate-400">
           Duration Actual คำนวณจาก Actual Start Date ถึง Actual End Date (หรือถึงวันนี้ถ้ายังไม่จบ)
         </p>
       </main>

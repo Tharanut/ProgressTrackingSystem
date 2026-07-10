@@ -130,7 +130,7 @@ export default async function DashboardPage() {
       <AppNav profile={profile} />
       <main className="mx-auto w-full max-w-5xl flex-1 px-6 py-10">
         <h1 className="text-2xl font-bold">Dashboard</h1>
-        <p className="mt-1 text-sm text-zinc-500">ยินดีต้อนรับ, {profile.full_name}</p>
+        <p className="mt-1 text-sm text-slate-500">ยินดีต้อนรับ, {profile.full_name}</p>
 
         <section className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
           <DashboardCard label="Total Projects" value={counts.total} />
@@ -162,10 +162,10 @@ export default async function DashboardPage() {
         <section className="mt-8 grid gap-6 sm:grid-cols-2">
           <div>
             <h2 className="text-lg font-semibold">Project by Department</h2>
-            <div className="mt-3 overflow-x-auto rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
+            <div className="mt-3 overflow-x-auto rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
               <table className="w-full min-w-max text-left text-sm">
                 <thead>
-                  <tr className="border-b border-zinc-200 text-zinc-500 dark:border-zinc-800">
+                  <tr className="border-b border-slate-200 text-slate-500 dark:border-slate-800">
                     <th className="py-2 pr-4 font-medium">Department</th>
                     <th className="py-2 pr-4 font-medium">Projects</th>
                     <th className="py-2 pr-4 font-medium">Planned MD</th>
@@ -176,7 +176,7 @@ export default async function DashboardPage() {
                   {[...byDepartment.entries()].map(([name, d]) => (
                     <tr
                       key={name}
-                      className="border-b border-zinc-100 last:border-0 dark:border-zinc-900"
+                      className="border-b border-slate-100 last:border-0 dark:border-slate-900"
                     >
                       <td className="py-2 pr-4 font-medium">{name}</td>
                       <td className="py-2 pr-4">{d.count}</td>
@@ -191,15 +191,15 @@ export default async function DashboardPage() {
 
           <div>
             <h2 className="text-lg font-semibold">Top 5 Overloaded Resources</h2>
-            <div className="mt-3 overflow-x-auto rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
+            <div className="mt-3 overflow-x-auto rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
               {overloadedResources.length === 0 ? (
-                <p className="py-4 text-center text-sm text-zinc-500">
+                <p className="py-4 text-center text-sm text-slate-500">
                   ไม่มี Resource ที่ Overload
                 </p>
               ) : (
                 <table className="w-full min-w-max text-left text-sm">
                   <thead>
-                    <tr className="border-b border-zinc-200 text-zinc-500 dark:border-zinc-800">
+                    <tr className="border-b border-slate-200 text-slate-500 dark:border-slate-800">
                       <th className="py-2 pr-4 font-medium">Employee</th>
                       <th className="py-2 pr-4 font-medium">Utilization</th>
                     </tr>
@@ -208,12 +208,12 @@ export default async function DashboardPage() {
                     {overloadedResources.map((r) => (
                       <tr
                         key={r.id}
-                        className="border-b border-zinc-100 last:border-0 dark:border-zinc-900"
+                        className="border-b border-slate-100 last:border-0 dark:border-slate-900"
                       >
                         <td className="py-2 pr-4">
                           <Link
                             href={`/resources/${r.id}`}
-                            className="font-medium text-indigo-600 hover:underline dark:text-indigo-400"
+                            className="font-medium text-sky-600 hover:underline dark:text-sky-400"
                           >
                             {r.full_name}
                           </Link>
@@ -232,13 +232,13 @@ export default async function DashboardPage() {
 
         <section className="mt-8">
           <h2 className="text-lg font-semibold">Top 5 Delayed Projects</h2>
-          <div className="mt-3 overflow-x-auto rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
+          <div className="mt-3 overflow-x-auto rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
             {delayedProjects.length === 0 ? (
-              <p className="py-4 text-center text-sm text-zinc-500">ไม่มี Project ที่ล่าช้า</p>
+              <p className="py-4 text-center text-sm text-slate-500">ไม่มี Project ที่ล่าช้า</p>
             ) : (
               <table className="w-full min-w-max text-left text-sm">
                 <thead>
-                  <tr className="border-b border-zinc-200 text-zinc-500 dark:border-zinc-800">
+                  <tr className="border-b border-slate-200 text-slate-500 dark:border-slate-800">
                     <th className="py-2 pr-4 font-medium">Project</th>
                     <th className="py-2 pr-4 font-medium">Days Overdue</th>
                     <th className="py-2 pr-4 font-medium">Progress</th>
@@ -249,12 +249,12 @@ export default async function DashboardPage() {
                   {delayedProjects.map((p) => (
                     <tr
                       key={p.id}
-                      className="border-b border-zinc-100 last:border-0 dark:border-zinc-900"
+                      className="border-b border-slate-100 last:border-0 dark:border-slate-900"
                     >
                       <td className="py-2 pr-4">
                         <Link
                           href={`/projects/${p.id}`}
-                          className="font-medium text-indigo-600 hover:underline dark:text-indigo-400"
+                          className="font-medium text-sky-600 hover:underline dark:text-sky-400"
                         >
                           {p.project_code} · {p.project_name}
                         </Link>
@@ -276,7 +276,7 @@ export default async function DashboardPage() {
 
         <section className="mt-8">
           <h2 className="text-lg font-semibold">Project ล่าสุด</h2>
-          <div className="mt-3 rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
+          <div className="mt-3 rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
             <ProjectTable projects={recent} />
           </div>
         </section>

@@ -18,14 +18,14 @@ export type TaskRow = {
 
 export function TaskTable({ projectId, tasks }: { projectId: string; tasks: TaskRow[] }) {
   if (tasks.length === 0) {
-    return <p className="py-8 text-center text-sm text-zinc-500">ยังไม่มี Task</p>;
+    return <p className="py-8 text-center text-sm text-slate-500">ยังไม่มี Task</p>;
   }
 
   return (
     <div className="overflow-x-auto">
       <table className="w-full min-w-max text-left text-sm">
         <thead>
-          <tr className="border-b border-zinc-200 text-zinc-500 dark:border-zinc-800">
+          <tr className="border-b border-slate-200 text-slate-500 dark:border-slate-800">
             <th className="py-2 pr-4 font-medium">Task</th>
             <th className="py-2 pr-4 font-medium">Assigned To</th>
             <th className="py-2 pr-4 font-medium">Planned End</th>
@@ -38,19 +38,22 @@ export function TaskTable({ projectId, tasks }: { projectId: string; tasks: Task
         </thead>
         <tbody>
           {tasks.map((t) => (
-            <tr key={t.id} className="border-b border-zinc-100 last:border-0 dark:border-zinc-900">
+            <tr
+              key={t.id}
+              className="border-b border-slate-100 last:border-0 dark:border-slate-900"
+            >
               <td className="py-2 pr-4">
                 <Link
                   href={`/projects/${projectId}/tasks/${t.id}`}
-                  className="font-medium text-indigo-600 hover:underline dark:text-indigo-400"
+                  className="font-medium text-sky-600 hover:underline dark:text-sky-400"
                 >
                   {t.task_name}
                 </Link>
               </td>
-              <td className="py-2 pr-4 text-zinc-600 dark:text-zinc-400">
+              <td className="py-2 pr-4 text-slate-600 dark:text-slate-400">
                 {t.assigned_name ?? "-"}
               </td>
-              <td className="py-2 pr-4 text-zinc-600 dark:text-zinc-400">
+              <td className="py-2 pr-4 text-slate-600 dark:text-slate-400">
                 {t.planned_end_date ?? "-"}
               </td>
               <td className="py-2 pr-4">

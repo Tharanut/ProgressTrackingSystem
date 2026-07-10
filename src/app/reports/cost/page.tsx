@@ -59,7 +59,7 @@ export default async function CostReportPage() {
       <AppNav profile={profile} />
       <main className="mx-auto w-full max-w-4xl flex-1 px-6 py-10">
         <h1 className="text-2xl font-bold">Cost Report</h1>
-        <p className="mt-1 text-sm text-zinc-500">
+        <p className="mt-1 text-sm text-slate-500">
           Planned vs Actual Cost แยกตาม Project และตามพนักงาน
         </p>
 
@@ -73,10 +73,10 @@ export default async function CostReportPage() {
               title="Cost by Project"
             />
           </div>
-          <div className="mt-3 overflow-x-auto rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
+          <div className="mt-3 overflow-x-auto rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
             <table className="w-full min-w-max text-left text-sm">
               <thead>
-                <tr className="border-b border-zinc-200 text-zinc-500 dark:border-zinc-800">
+                <tr className="border-b border-slate-200 text-slate-500 dark:border-slate-800">
                   <th className="py-2 pr-4 font-medium">Project</th>
                   <th className="py-2 pr-4 font-medium">Planned Cost</th>
                   <th className="py-2 pr-4 font-medium">Actual Cost</th>
@@ -87,12 +87,12 @@ export default async function CostReportPage() {
                 {byProject.map((p) => (
                   <tr
                     key={p.id}
-                    className="border-b border-zinc-100 last:border-0 dark:border-zinc-900"
+                    className="border-b border-slate-100 last:border-0 dark:border-slate-900"
                   >
                     <td className="py-2 pr-4">
                       <Link
                         href={`/projects/${p.id}`}
-                        className="font-medium text-indigo-600 hover:underline dark:text-indigo-400"
+                        className="font-medium text-sky-600 hover:underline dark:text-sky-400"
                       >
                         {p.project_code} · {p.project_name}
                       </Link>
@@ -119,15 +119,15 @@ export default async function CostReportPage() {
               title="Cost by Resource"
             />
           </div>
-          <div className="mt-3 overflow-x-auto rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
+          <div className="mt-3 overflow-x-auto rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
             {byResource.length === 0 ? (
-              <p className="py-4 text-center text-sm text-zinc-500">
+              <p className="py-4 text-center text-sm text-slate-500">
                 ยังไม่มีต้นทุนที่เกิดขึ้นจริง
               </p>
             ) : (
               <table className="w-full min-w-max text-left text-sm">
                 <thead>
-                  <tr className="border-b border-zinc-200 text-zinc-500 dark:border-zinc-800">
+                  <tr className="border-b border-slate-200 text-slate-500 dark:border-slate-800">
                     <th className="py-2 pr-4 font-medium">Employee</th>
                     <th className="py-2 pr-4 font-medium">Actual Cost</th>
                   </tr>
@@ -136,12 +136,12 @@ export default async function CostReportPage() {
                   {byResource.map((r) => (
                     <tr
                       key={r.id}
-                      className="border-b border-zinc-100 last:border-0 dark:border-zinc-900"
+                      className="border-b border-slate-100 last:border-0 dark:border-slate-900"
                     >
                       <td className="py-2 pr-4">
                         <Link
                           href={`/resources/${r.id}`}
-                          className="font-medium text-indigo-600 hover:underline dark:text-indigo-400"
+                          className="font-medium text-sky-600 hover:underline dark:text-sky-400"
                         >
                           {r.full_name}
                         </Link>

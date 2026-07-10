@@ -48,7 +48,7 @@ export default async function ProjectMembersPage({ params }: { params: Promise<{
     <>
       <AppNav profile={profile} />
       <main className="mx-auto w-full max-w-4xl flex-1 px-6 py-10">
-        <div className="flex items-center gap-2 text-sm text-zinc-500">
+        <div className="flex items-center gap-2 text-sm text-slate-500">
           <Link href="/projects" className="hover:underline">
             Projects
           </Link>
@@ -61,13 +61,13 @@ export default async function ProjectMembersPage({ params }: { params: Promise<{
         </div>
         <h1 className="mt-1 text-2xl font-bold">Members — {project.project_name}</h1>
 
-        <section className="mt-6 overflow-x-auto rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
+        <section className="mt-6 overflow-x-auto rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
           {members.length === 0 ? (
-            <p className="py-8 text-center text-sm text-zinc-500">ยังไม่มีสมาชิกใน Project นี้</p>
+            <p className="py-8 text-center text-sm text-slate-500">ยังไม่มีสมาชิกใน Project นี้</p>
           ) : (
             <table className="w-full min-w-max text-left text-sm">
               <thead>
-                <tr className="border-b border-zinc-200 text-zinc-500 dark:border-zinc-800">
+                <tr className="border-b border-slate-200 text-slate-500 dark:border-slate-800">
                   <th className="py-2 pr-4 font-medium">Employee</th>
                   <th className="py-2 pr-4 font-medium">Project Role</th>
                   <th className="py-2 pr-4 font-medium">Responsibility</th>
@@ -89,11 +89,11 @@ export default async function ProjectMembersPage({ params }: { params: Promise<{
                   return (
                     <tr
                       key={m.id}
-                      className="border-b border-zinc-100 last:border-0 dark:border-zinc-900"
+                      className="border-b border-slate-100 last:border-0 dark:border-slate-900"
                     >
                       <td className="py-2 pr-4 font-medium">{m.employee?.full_name ?? "-"}</td>
                       <td className="py-2 pr-4">{m.project_role ?? "-"}</td>
-                      <td className="py-2 pr-4 text-zinc-600 dark:text-zinc-400">
+                      <td className="py-2 pr-4 text-slate-600 dark:text-slate-400">
                         {m.responsibility ?? "-"}
                       </td>
                       <td className="py-2 pr-4">{planned}</td>
