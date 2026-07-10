@@ -67,10 +67,6 @@ export default function LoginPage() {
             {pending ? "กำลังเข้าสู่ระบบ..." : "เข้าสู่ระบบ"}
           </button>
         </form>
-
-        <p className="mt-4 text-center text-xs text-slate-400">
-          ตัวอย่าง (seed): admin / somchai / wichai — รหัสผ่าน ProjectPulse#2026
-        </p>
       </div>
     </main>
   );
