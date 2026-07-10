@@ -47,19 +47,24 @@ src/
     projects/[id]/planned-vs-actual/page.tsx  # Duration/MD/Cost planned vs actual
     resources/page.tsx, resources/[id]/page.tsx  # Resource Dashboard + drill-down
     reports/page.tsx, reports/project-summary|resource-workload|cost/page.tsx
+    employees/page.tsx, employees/[id]/page.tsx  # admin-only Employees CRUD (create/edit/activate)
   components/
     DashboardCard.tsx, ProgressBar.tsx, StatusBadge.tsx (Project/TaskStatusBadge)
     VarianceBadge.tsx, ResourceUtilizationBar.tsx, ExportButton.tsx, DateRangeFilter.tsx
     ProjectTable.tsx, TaskTable.tsx, RoleGuard.tsx, AppNav.tsx
-    forms/*                    # client forms (useActionState) per entity
+    forms/*                    # client forms (useActionState) per entity, incl.
+                                # NewEmployeeForm/EditEmployeeForm/ToggleEmployeeActiveButton
   lib/
     supabase/client.ts         # browser client
     supabase/server.ts         # server client (await cookies())
+    supabase/admin.ts          # createAdminClient() — service-role, server-only, for
+                                # auth.admin.createUser (employee onboarding); never import
+                                # from a "use client" component
     supabase/proxy-session.ts  # updateSession() ใช้ใน proxy.ts
     auth.ts                    # getCurrentProfile / requireProfile / canManageProjects
     activity.ts                # logActivity() — insert into activity_logs
     auth-actions.ts            # login / logout server actions
-    actions/projects.ts, members.ts, tasks.ts, time-logs.ts  # CRUD Server Actions
+    actions/projects.ts, members.ts, tasks.ts, time-logs.ts, employees.ts  # CRUD Server Actions
     form-utils.ts              # formStr/formNum FormData helpers
     metrics.ts                 # variance/utilization/overdue pure calc helpers
     export.ts                  # exportToCsv / exportToExcel / exportToPdf (client-side)
@@ -80,6 +85,10 @@ src/
   `.select("id")` แล้วดูว่า array ว่างไหม ไม่ใช่เช็คแค่ `error`
 - `activity_logs` มีแค่ policy select/insert (ไม่มี update/delete) — เป็น audit trail
   ที่ตั้งใจให้ immutable แม้แต่ admin ก็ลบไม่ได้ผ่าน RLS ปกติ
+- Employees CRUD (`app/employees/`) เป็น **admin-only** ทั้ง route guard (`RoleGuard`) และ
+  ใน Server Action เอง (`requireAdmin()` ใน `lib/actions/employees.ts` เช็ค role ซ้ำ ไม่พึ่ง
+  RLS/UI อย่างเดียว) — สร้าง employee ใหม่ต้องใช้ `createAdminClient()` (service role) เพราะ
+  `auth.admin.createUser` เรียกผ่าน anon/authenticated client ไม่ได้
 
 ## Actual Man-Day / Progress % (derived, ไม่ใช่ manual)
 
